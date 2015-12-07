@@ -35,6 +35,9 @@ app.mapView = Backbone.View.extend({
                 mapPolygon.setMap(app.map);
                 this.allMapPolygon[districtId][j][k]["mapPolygon"] = mapPolygon;
                 this.allMapPolygon[districtId][j][k]["markers"] = [];
+                // Need this variable because getActivityInRegion is async call.
+                // If user checks and unchecks very fast. It hide the polygon but markers are still shown.
+                this.allMapPolygon[districtId][j][k]["show"] = true;
 
                 // get feeds and other stuff.
                 this.getActivityInRegion(decodedPath,this.allMapPolygon[districtId][j][k]);
@@ -53,6 +56,7 @@ app.mapView = Backbone.View.extend({
                 this.allMapPolygon[districtId][j][k]["mapPolygon"].setMap(null);
                 this.removeMarkers(this.allMapPolygon[districtId][j][k]["markers"]);
                 this.allMapPolygon[districtId][j][k]["markers"] = [];
+                this.allMapPolygon[districtId][j][k]["show"] = false;
             }
         }
     },
@@ -68,7 +72,7 @@ app.mapView = Backbone.View.extend({
             radius: 500,
             types: ['food']
         }, function(results,status){
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
+            if (status === google.maps.places.PlacesServiceStatus.OK && polyObj["show"]) {
                 for (var i = 0,len=results.length; i < len; i++) {
                     self.createMarker(results[i],polyObj);
                 }
