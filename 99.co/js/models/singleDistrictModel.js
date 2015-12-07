@@ -1,5 +1,6 @@
 var app = app || {};
 
+// Single  District Model for my assignment
 app.singleDistrictModel = Backbone.Model.extend({
 
 	defaults : {

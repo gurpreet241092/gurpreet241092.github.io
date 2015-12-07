@@ -4,16 +4,14 @@ app.mapView = Backbone.View.extend({
 
     el: "#map",
 
-    events: {
-
-    },
-
     initialize: function(options){
         this.parentView = options.parentView;
         this.allDistrictPolygon = options.allDistrictPolygon;
         this.allMapPolygon = {};
     },
 
+    // Show the district polygon on map associated with that district id.
+    // and then fetch activities happening or places in that region.
     showDistrictPolygon: function(districtId){
         var district = this.allDistrictPolygon[districtId];
         this.allMapPolygon[districtId] = {};
@@ -44,6 +42,8 @@ app.mapView = Backbone.View.extend({
         }
     },
 
+    // Hide the district polygon from the map of the given ID.
+    // Also removes the markers from the map associated in that region.
     hideDistrictPolygon: function(districtId){
         var district = this.allDistrictPolygon[districtId];
         var ref = district.polygons;
@@ -57,6 +57,8 @@ app.mapView = Backbone.View.extend({
         }
     },
 
+    // Right now finding all restaurants using googles place service api.
+    // Lot of other stuff can be done here.
     getActivityInRegion: function(path,polyObj){
         var LatLng = this.getAvgLatLng(path);
         var service = new google.maps.places.PlacesService(app.map);
@@ -74,8 +76,8 @@ app.mapView = Backbone.View.extend({
         });
     },
 
+    // Creates a marker on the map.
     createMarker: function(place,polyObj) {
-
         var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
             map: app.map,
@@ -96,12 +98,14 @@ app.mapView = Backbone.View.extend({
         });
     },
 
+    // Removes all the markers associated with a polgon from the map.
     removeMarkers: function(markers){
         for(i=0,len=markers.length;i<len;i++){
             markers[i].setMap(null);
         }
     },
 
+    // Get approximate center of polygon by taking average.
     getAvgLatLng: function(path){
         var lat = 0,lng = 0;
         var len=path.length;

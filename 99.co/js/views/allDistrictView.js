@@ -8,10 +8,6 @@ app.allDistrictView = Backbone.View.extend({
         'click input.districtFilter': 'showDistrictOnMap'
     },
 
-    template : {
-
-    },
-
     initialize: function(options){
         if(!this.collection) return;
         this.allDistrictPolygon = this.allDistrictPolygon || options.allDistrictPolygon;
@@ -29,6 +25,7 @@ app.allDistrictView = Backbone.View.extend({
         this.$el.append(districtView.render().el);
     },
 
+    // Initializing Map View
     initMapView: function(){
         this.mapView = new app.mapView({
             collection : this.collection,
@@ -37,6 +34,7 @@ app.allDistrictView = Backbone.View.extend({
         });
     },
 
+    // Will show the corresponding district on map.
     showDistrictOnMap:function(e){
         var target = $(e.target);
         var districtId = target.val();
@@ -47,6 +45,7 @@ app.allDistrictView = Backbone.View.extend({
         }
     },
 
+    // This was my earlier approach. Not using this function now.
     showDistrictOnMap2: function(){
         var districtChecked = this.$el.find("input.districtFilter:checked");
         var districtValues  = [];
@@ -54,9 +53,7 @@ app.allDistrictView = Backbone.View.extend({
         _.each(districtChecked,function(district){
             districtValues.push($(district).val());
         });
-        console.log(districtValues);
         this.mapView.showDistrictPolygon(districtValues);
     }
-
 
 });
