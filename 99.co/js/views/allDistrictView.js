@@ -43,17 +43,6 @@ app.allDistrictView = Backbone.View.extend({
         }else{
             this.mapView.hideDistrictPolygon(districtId);
         }
-    },
-
-    // This was my earlier approach. Not using this function now.
-    showDistrictOnMap2: function(){
-        var districtChecked = this.$el.find("input.districtFilter:checked");
-        var districtValues  = [];
-
-        _.each(districtChecked,function(district){
-            districtValues.push($(district).val());
-        });
-        this.mapView.showDistrictPolygon(districtValues);
     }
 
 });

@@ -116,42 +116,5 @@ app.mapView = Backbone.View.extend({
         var avgLat = lat/len;
         var avgLng = lng/len;
         return {lat: avgLat, lng: avgLng};
-    },
-
-    // This was my earlier approach. Not using this function now.
-    showDistrictPolygon2: function(districtIds){
-        this.refreshMap();
-        for(i=0,len=districtIds.length;i<len;i++){
-            district = this.allDistrictPolygon[districtIds[i]];
-            ref = district.polygons;
-            for (j = 0, len1 = ref.length; j < len1; j++) {
-                polygon = ref[j];
-                for (k = 0, len2 = polygon.length; k < len2; k++) {
-                    line = polygon[k];
-                    decodedPath = google.maps.geometry.encoding.decodePath(line.points);
-                    mapPolygon = new google.maps.Polygon({
-                        paths: [decodedPath],
-                        strokeColor: "#60A9E1",
-                        strokeOpacity: 1,
-                        strokeWeight: 2,
-                        fillColor: "#3893d9",
-                        fillOpacity: 0.15,
-                        zIndex: -2
-                    });
-                    mapPolygon.setMap(app.map);
-                }
-            }
-        }
-    },
-
-    // This was my earlier approach. Not using this function now.
-    refreshMap: function(){
-        var latlng = {lat: 1.352083, lng: 103.819836}; // lat lng of singapore
-        app.map = new google.maps.Map(document.getElementById('map'), {
-            center: latlng,
-            zoom: 11
-        });
     }
-
-
 });
