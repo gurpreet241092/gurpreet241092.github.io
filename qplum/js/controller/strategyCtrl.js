@@ -1,4 +1,4 @@
-app.controller('strategyCtrl', function($scope, $http) {
+app.controller('strategyCtrl', function($scope, $http, $timeout) {
   var LIMIT = 15;
   var offset = 0;
   $scope.strategyData = [];
@@ -58,6 +58,10 @@ app.controller('strategyCtrl', function($scope, $http) {
     if(len = fetchedStrategyData.length){
       offset += len;
       $scope.strategyData = $scope.strategyData.concat(fetchedStrategyData);
+
+      $timeout(function(){
+        app.pieChart.init();
+      },100);
     }
   }
 

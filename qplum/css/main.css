@@ -117,6 +117,7 @@
   height:160px;
   width:100%;
   border-bottom: 1px solid #A4A4A4;
+  text-align: center;
 }
 .itemLabels{
   text-align: left;
