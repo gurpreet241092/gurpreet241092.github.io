@@ -1,0 +1,175 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+#headerContainer{
+  height: 63px;
+  width: 100%;
+}
+#header{
+  background: #5b8eab;
+  height: 63px;
+  position: fixed;
+  z-index: 101;
+  font-family: "Open Sans";
+  width: 100%;
+}
+#header .container-fluid{
+  padding: 0px 15px;
+}
+#header .container-fluid>.row{
+  height: 100%;
+}
+#header .container-fluid>.row>div{
+  height: 63px;
+}
+.row{
+  margin: 0px -15px;
+}
+#header .header-left{
+  display: inline-block;
+  vertical-align: top;
+  height: 63px;
+}
+#header .header-logo .logo-xs{
+  display: none;
+}
+#header .header-logo img{
+  background-color: white;
+  margin-top: 10px;
+}
+#header .header-partition{
+  margin-left: 15px;
+}
+#header .header-partition .header-partition-inner{
+  border-left: 1px solid #ceced2;
+  margin-top: 6px;
+  height: 50px;
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  color: white;
+}
+.truncate{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipses;
+}
+
+.content-item{
+  border: 1px solid #A4A4A4;
+  width: 320px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 20px;
+  border-radius: 5px;
+}
+
+.mainContent{
+  margin: 0px auto;
+  text-align: center;
+}
+
+.inline{
+  display: inline-block;
+  vertical-align: top;
+}
+.itemHeader{
+  font-size: 0px;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #A4A4A4;
+}
+.headerText{
+  margin-left: 5px;
+}
+.headerTextTop{
+  color: #c98257;
+  font-size: 18px;
+}
+.headerTextBot{
+  color: #5b8eab;
+  font-size: 16px;
+}
+.rating{
+  background-image: url('../images/star2.png');
+  background-size: 45px 45px;
+  height: 45px;
+  width: 45px;
+  position: relative;
+}
+.ratingText{
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.follow{
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  font-weight: bold;
+  color:#5b8eab; // blue
+}
+.itemGraph{
+  height:160px;
+  width:100%;
+  border-bottom: 1px solid #A4A4A4;
+}
+.itemLabels{
+  text-align: left;
+  margin-top:16px;
+  padding: 0px 8px;
+  color: #5b8eab;
+  min-height: 80px;
+}
+.otherLabel,.otherLabelEnd{
+  color: #A4A4A4;
+}
+.addToPortfolio{
+  padding:8px;
+}
+.addToPortfolioButton{
+  border:1px solid  #A4A4A4;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+  color:#bbbdbf;
+  cursor: pointer;
+}
+
+@media (max-width: 767px){
+  #header .header-logo{
+    margin-left: 24px;
+  }
+  #header .header-logo .logo-md{
+    display: none;
+  }
+  #header .header-logo .logo-xs{
+    display: inline;
+  }
+  #header .header-partition .header-partition-inner{
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  #header .header-logo img{
+    margin-top: 18px;
+  }
+  .menuHolder{
+    padding: 0px;
+  }
+  .content-item{
+    width: 290px;
+    margin: 10px 15px;
+  }
+  .rating{
+    background-size: 40px 40px;
+    height: 40px;
+    width: 40px;
+  }
+  .ratingText{
+    font-size: 12px;
+  }
+}
