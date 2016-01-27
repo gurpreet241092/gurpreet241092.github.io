@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Strategies | qplum</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="headerContainer">
+    <div id="header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1 col-xs-1 col-sm-1 menuHolder"></div>
+          <div class="col-md-5 col-sm-5 col-xs-11 header-left-container">
+            <div class="header-logo header-left">
+              <a href="#" class="logo-md">
+                <img width="90" src="images/qplum_logo.png" alt="qplum logo"/>
+              </a>
+              <a href="#" class="logo-xs">
+                <img width="30" src="images/qplum_logo_small.png" alt="qplum logo"/>
+              </a>
+            </div>
+            <div class="header-partition header-left">
+              <div class="header-partition-inner truncate">Strategies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content of our App -->
+  <div class="mainContent" ng-app="strategyApp" ng-controller="strategyCtrl" infinite-scroll="nextPage()">
+    <div class="content-item" ng-repeat="item in strategyData" ng-init="o=getObject(item)">
+      <div class='itemHeader'>
+        <div class='rating inline'>
+          <span class='ratingText' ng-bind='o.rating'></span>
+        </div>
+        <div class='headerText inline'>
+          <div class='headerTextTop'>Constant Allocation</div>
+          <div class='headerTextBot' ng-bind='o.ticker'></div>
+        </div>
+        <div class='follow inline'>
+          <span class='followText'>+ Follow</span>
+        </div>
+      </div>
+      <div class='itemGraph'></div>
+      <div class='itemLabels' ng-bind-html='getLabelTextHTML(o.labels) | to_trusted'></div>
+      <div class='addToPortfolio'>
+        <div class='addToPortfolioButton'>Add To Portfolio!</div>
+      </div>
+    </div>
+
+  </div>
+
+<script src="js/libs/jquery.js"></script>
+<script src="js/libs/angular.min.js"></script>
+<script src="js/libs/ng-infinite-scroll.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/module/strategyModule.js"></script>
+<script src="js/filters/strategyFilters.js"></script>
+<script src="js/controller/strategyCtrl.js"></script>
+
+</body>
+</html>
